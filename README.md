@@ -1,5 +1,4 @@
-# Laura Helena Molina
-#A01706282
+# Laura Helena Molina - A01706282
 # Proyecto: Lógistica de Transporte
 
 Este proyecto tiene por objetivo crear un prototipo de un programa para una empresa dedicada a la logísitca de comercio, en el cual según las características del cargamento que deban transportar, el código indique el o los transportes con la capacidad para trasladar el cargamento, facilitando así la toma de desiciones.
