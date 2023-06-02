@@ -23,7 +23,7 @@ class Transporte{
         lat_t(latt), lon_t(lont), cap_kg(ck), cap_pallets(cp),\
         cap_cajas(cc){};
 
-        void imprime_transportes();
+        virtual void imprime_transportes() = 0;
 
         std::string get_nombre();
         int get_num_trans();
@@ -45,18 +45,6 @@ class Transporte{
         void set_cap_pallets(int );
         void set_cap_cajas(int );
 };
-
-void Transporte::imprime_transportes(){
-	std::cout << "nombre: "<< nombre << endl;
-	std::cout << "numero: "<< num_trans << endl;
-	std::cout << "permiso: "<< permiso << endl;
-	std::cout << "velocidad maxima: "<< principal << endl;
-	std::cout << "latitud: "<< lat_t << endl;
-	std::cout << "longitud: "<< lon_t << endl;
-	std::cout << "capacidad de kg: "<< cap_kg << endl;
-	std::cout << "capacidad de pallets: "<< cap_pallets << endl;
-	std::cout << "capacidad de cajas: "<< cap_cajas << endl;
-}
 
 std::string Transporte::get_nombre(){
     return nombre;
@@ -135,8 +123,13 @@ class Terrestre: public Transporte{
         bool edo_llantas;
 
     public:
-        Terrestre():edo_llantas(0){};
-        Terrestre(bool edo): edo_llantas(edo){};
+        Terrestre();
+        Terrestre(std::string nom, int num, bool per, int vel,\
+        float latt, float lont, float ck, int cp, int cc, bool edo):\
+        Transporte(std::string nom, int num, bool per, int vel,\
+        float latt, float lont, float ck, int cp, int cc){
+            edo_llantas = edo;
+        }
 
         void imprime_transportes();
         std::string dar_edollanta(bool );
@@ -147,16 +140,16 @@ class Terrestre: public Transporte{
 };
 
 void Terrestre::imprime_transportes(){
-	std::cout << "nombre: "<< nombre << endl;
-	std::cout << "numero: "<< num_trans << endl;
-	std::cout << "permiso: "<< permiso << endl;
-	std::cout << "velocidad maxima: "<< principal << endl;
-	std::cout << "latitud: "<< lat_t << endl;
-	std::cout << "longitud: "<< lon_t << endl;
-	std::cout << "capacidad de kg: "<< cap_kg << endl;
-	std::cout << "capacidad de pallets: "<< cap_pallets << endl;
-	std::cout << "capacidad de cajas: "<< cap_cajas << endl;
-	std::cout << "estado de las llantas: "<< edo_llantas << endl;
+	std::cout << "nombre: "<< nombre << std::endl;
+	std::cout << "numero: "<< num_trans << std::endl;
+	std::cout << "permiso: "<< permiso << std::endl;
+	std::cout << "velocidad maxima: "<< vel_max << std::endl;
+	std::cout << "latitud: "<< lat_t << std::endl;
+	std::cout << "longitud: "<< lon_t << std::endl;
+	std::cout << "capacidad de kg: "<< cap_kg << std::endl;
+	std::cout << "capacidad de pallets: "<< cap_pallets << std::endl;
+	std::cout << "capacidad de cajas: "<< cap_cajas << std::endl;
+	std::cout << "estado de las llantas: "<< edo_llantas << std::endl;
 }
 
 bool Terrestre::get_edo_llantas(){
@@ -173,6 +166,7 @@ class Maritimo: public Transporte{
         std::string marea;
 
     public:
+        Maritimo();
         Maritimo(std::string nom, int num, bool per, int vel,\
         float latt, float lont, float ck, int cp, int cc,\
         std::string clmar, std::string mar): Transporte(std::string nom,\
@@ -188,21 +182,21 @@ class Maritimo: public Transporte{
         std::string get_marea();
 
         void set_clima_mar(std::string );
-        void set_marea(std:string);
+        void set_marea(std::string );
 };
 
 void Maritimo::imprime_transportes(){
-	std::cout << "nombre: "<< nombre << endl;
-	std::cout << "numero: "<< num_trans << endl;
-	std::cout << "permiso: "<< permiso << endl;
-	std::cout << "velocidad maxima: "<< principal << endl;
-	std::cout << "latitud: "<< lat_t << endl;
-	std::cout << "longitud: "<< lon_t << endl;
-	std::cout << "capacidad de kg: "<< cap_kg << endl;
-	std::cout << "capacidad de pallets: "<< cap_pallets << endl;
-	std::cout << "capacidad de cajas: "<< cap_cajas << endl;
-	std::cout << "clima en el mar: "<< clima_mar << endl;
-	std::cout << "marea: "<< marea << endl;
+	std::cout << "nombre: "<< nombre << std::endl;
+	std::cout << "numero: "<< num_trans << std::endl;
+	std::cout << "permiso: "<< permiso << std::endl;
+	std::cout << "velocidad maxima: "<< vel_max << std::endl;
+	std::cout << "latitud: "<< lat_t << std::endl;
+	std::cout << "longitud: "<< lon_t << std::endl;
+	std::cout << "capacidad de kg: "<< cap_kg << std::endl;
+	std::cout << "capacidad de pallets: "<< cap_pallets << std::endl;
+	std::cout << "capacidad de cajas: "<< cap_cajas << std::endl;
+	std::cout << "clima en el mar: "<< clima_mar << std::endl;
+	std::cout << "marea: "<< marea << std::endl;
 }
 
 std::string Maritimo::get_clima_mar(){
@@ -227,7 +221,8 @@ class Aereo: public Transporte{
         std::string fase_vuelo;
 
     public:
-        Maritimo(std::string nom, int num, bool per, int vel,\
+        Aereo();
+        Aereo(std::string nom, int num, bool per, int vel,\
         float latt, float lont, float ck, int cp, int cc,\
         std::string clcie, std::string fv): Transporte(std::string nom,\
         int num, bool per, int vel,float latt, float lont,\
@@ -242,21 +237,21 @@ class Aereo: public Transporte{
         std::string get_fase_vuelo();
 
         void set_clima_cielo(std::string );
-        void set_fase_vuelo(std:string);
+        void set_fase_vuelo(std::string );
 };
 
 void Aereo::imprime_transportes(){
-	std::cout << "nombre: "<< nombre << endl;
-	std::cout << "numero: "<< num_trans << endl;
-	std::cout << "permiso: "<< permiso << endl;
-	std::cout << "velocidad maxima: "<< principal << endl;
-	std::cout << "latitud: "<< lat_t << endl;
-	std::cout << "longitud: "<< lon_t << endl;
-	std::cout << "capacidad de kg: "<< cap_kg << endl;
-	std::cout << "capacidad de pallets: "<< cap_pallets << endl;
-	std::cout << "capacidad de cajas: "<< cap_cajas << endl;
-	std::cout << "clima en el cielo: "<< clima_cielo << endl;
-	std::cout << "fase del vuelo: "<< fase_vuelo << endl;
+	std::cout << "nombre: "<< nombre << std::endl;
+	std::cout << "numero: "<< num_trans << std::endl;
+	std::cout << "permiso: "<< permiso << std::endl;
+	std::cout << "velocidad maxima: "<< vel_max << std::endl;
+	std::cout << "latitud: "<< lat_t << std::endl;
+	std::cout << "longitud: "<< lon_t << std::endl;
+	std::cout << "capacidad de kg: "<< cap_kg << std::endl;
+	std::cout << "capacidad de pallets: "<< cap_pallets << std::endl;
+	std::cout << "capacidad de cajas: "<< cap_cajas << std::endl;
+	std::cout << "clima en el cielo: "<< clima_cielo << std::endl;
+	std::cout << "fase del vuelo: "<< fase_vuelo << std::endl;
 }
 
 std::string Aereo::get_clima_cielo(){
