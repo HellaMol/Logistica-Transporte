@@ -1,11 +1,11 @@
 # Laura Helena Molina - A01706282
 # Proyecto: Lógistica de Transporte
 
-Este proyecto tiene por objetivo crear un prototipo de un programa para una empresa dedicada a la logísitca de comercio, en el cual según las características del cargamento que deban transportar, el código indique el o los transportes con la capacidad para trasladar el cargamento, facilitando así la toma de desiciones.
+Este proyecto tiene por objetivo crear un prototipo de un programa para una empresa dedicada a la logísitca de transportes, en el cual los empleados puedan accesar a la información de los transportes que tienen en la empresa. Asimismo, se puede buscar por 
 
 # Diagrama UML
 
-En el UML se puede observar que la clase carga tiene una relación de agregación a la clase transporte, ya que esta sigue existiendo incluso si el transporte no existe y la clase transporte necesita accesar a los datos de la clase carga. Por otro lado, la clase transporte es una clase abstracta de la cual parten otras clases tales como Aéreo, Marítimo, Terrestre las cuales heredan a otras subclases otros atributos.
+En el UML se puede observar que la clase transporte tiene una relación de agregación a la clase base, ya que esta sigue existiendo incluso si el transporte no existe y la clase base necesita accesar a los datos de la clase transporte. Por otro lado, la clase transporte es una clase abstracta de la cual parten otras clases tales como Aéreo, Marítimo, Terrestre las cuales heredan a otras subclases con otros atributos.
 
 
 # Consideraciones
