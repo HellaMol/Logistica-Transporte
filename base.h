@@ -14,10 +14,42 @@ class Base{
         Base(){}
         void mostrar_transportes();
         void crear_transportes();
+        void buscar_por(float cap_kg );
+        void buscar_por(int vel_max );
+        void buscar_porcp(int cap_pallets );
+        void buscar_porcc(int cap_cajas );
 };
 
-void Base::mostrar_transportes() {
-    for (int i = 0; i < contador; i ++){
+void Base::mostrar_transportes(){
+    for (int i = 0; i < contador; i = i + 1){
+        std::cout<< trans[i]->imprime_transportes();
+    }
+}
+
+void Base::buscar_por(float cap_kg ){
+    for (int i = 0; i < contador; i = i + 1){
+        if(trans[i]->get_cap_kg() > cap_kg)
+        std::cout<< trans[i]->imprime_transportes();
+    }
+}
+
+void Base::buscar_porcp(int cap_pallets ){
+    for (int i = 0; i < contador; i = i + 1){
+        if(trans[i]->get_cap_pallets() > cap_pallets)
+        std::cout<< trans[i]->imprime_transportes();
+    }
+}
+
+void Base::buscar_porcc(int cap_cajas ){
+    for (int i = 0; i < contador; i = i+1){
+        if(trans[i]->get_cap_cajas() > cap_cajas)
+        std::cout<< trans[i]->imprime_transportes();
+    }
+}
+
+void Base::buscar_por(int vel_max ){
+    for (int i = 0; i < contador; i = i+1){
+        if(trans[i]->get_vel_max() > vel_max)
         std::cout<< trans[i]->imprime_transportes();
     }
 }
