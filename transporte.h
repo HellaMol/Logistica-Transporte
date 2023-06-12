@@ -110,7 +110,7 @@ class Terrestre: public Transporte{
         edo_llantas(edo){};
 
         std::string imprime_transportes();
-        std::string dar_edollanta(bool );
+        std::string disponibilidad(bool );
 
         bool get_edo_llantas();
         void set_edo_llantas(bool );
@@ -119,14 +119,14 @@ class Terrestre: public Transporte{
 
 std::string Terrestre::imprime_transportes(){
     std::stringstream aux;
-	aux << "nombre: "<< nombre << "\n"
-	<< "numero: "<< num_trans << "\n"
-	<< "permiso: "<< permiso << "\n"
-	<< "velocidad maxima: "<< vel_max << "\n"
-	<< "capacidad de kg: "<< cap_kg << "\n"
-	<< "capacidad de pallets: "<< cap_pallets << "\n"
-	<< "capacidad de cajas: "<< cap_cajas << "\n"
-	<< "estado de las llantas: "<< edo_llantas << "\n";
+	aux << "Nombre: "<< get_nombre() << "\n"
+	<< "Numero: "<< get_num_trans() << "\n"
+	<< "Permiso: "<< get_permiso() << "\n"
+	<< "Velocidad maxima: "<< get_vel_max() << "\n"
+	<< "Capacidad de kg: "<< get_cap_kg() << "\n"
+	<< "Capacidad de pallets: "<< get_cap_pallets() << "\n"
+	<< "Capacidad de cajas: "<< get_cap_cajas() << "\n"
+	<< "Estado de las llantas: "<< get_edo_llantas() << "\n";
 	return aux.str();
 }
 
@@ -164,15 +164,15 @@ class Maritimo: public Transporte{
 
 std::string Maritimo::imprime_transportes(){
     std::stringstream aux;
-	aux << "nombre: "<< nombre << std::endl
-	<< "numero: "<< num_trans << std::endl
-	<< "permiso: "<< permiso << std::endl
-	<< "velocidad maxima: "<< vel_max << std::endl
-	<< "capacidad de kg: "<< cap_kg << std::endl
-    << "capacidad de pallets: "<< cap_pallets << std::endl
-	<< "capacidad de cajas: "<< cap_cajas << std::endl
-    << "clima en el mar: "<< clima_mar << std::endl
-	<< "marea: "<< marea << std::endl;
+	aux << "Nombre: "<< get_nombre() << "\n"
+	<< "Numero: "<< get_num_trans() << "\n"
+	<< "Permiso: "<< get_permiso() << "\n"
+	<< "Velocidad maxima: "<< get_vel_max() << "\n"
+	<< "Capacidad de kg: "<< get_cap_kg() << "\n"
+	<< "Capacidad de pallets: "<< get_cap_pallets() << "\n"
+	<< "Capacidad de cajas: "<< get_cap_cajas() << "\n"
+    << "Clima en el mar: "<< get_clima_mar() << "\n"
+	<< "Marea: "<< get_marea() << "\n";
 	return aux.str();
 }
 
@@ -218,15 +218,15 @@ class Aereo: public Transporte{
 
 std::string Aereo::imprime_transportes(){
     std::stringstream aux;
-	aux << "nombre: "<< nombre << std::endl
-	<< "numero: "<< num_trans << std::endl
-	<< "permiso: "<< permiso << std::endl
-	<< "velocidad maxima: "<< vel_max << std::endl
-	<< "capacidad de kg: "<< cap_kg << std::endl
-	<< "capacidad de pallets: "<< cap_pallets << std::endl
-	<< "capacidad de cajas: "<< cap_cajas << std::endl
-    << "clima en el cielo: "<< clima_cielo << std::endl
-	<< "fase del vuelo: "<< fase_vuelo << std::endl;
+	aux << "Nombre: "<< get_nombre() << "\n"
+	<< "Numero: "<< get_num_trans() << "\n"
+	<< "Permiso: "<< get_permiso() << "\n"
+	<< "Velocidad maxima: "<< get_vel_max() << "\n"
+	<< "Capacidad de kg: "<< get_cap_kg() << "\n"
+	<< "Capacidad de pallets: "<< get_cap_pallets() << "\n"
+	<< "Capacidad de cajas: "<< get_cap_cajas() << "\n"
+    << "Clima en el cielo: "<< get_clima_cielo() << "\n"
+	<< "Fase del vuelo: "<< get_fase_vuelo() << "\n";
 
 	return aux.str();
 }
