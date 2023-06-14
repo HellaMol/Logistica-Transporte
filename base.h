@@ -26,7 +26,8 @@ class Base{
 
     //Se declaran atributos privados de Base
     private:
-        Transporte * trans[20]; //Se define como apuntador para usar polimorfismo
+        //Se define como apuntador para usar polimorfismo
+        Transporte * trans[20];
         int contador;
 
     //Se declaran metodos de la clase
@@ -44,7 +45,7 @@ class Base{
 /**
  * mostrar_transportes imprime transportes
  *
- * utiliza el arreglo trans[] y el contador, para recorrer  el
+ * utiliza el arreglo trans[] y el contador, para recorrer el
  * arreglo imprimiendo cada objeto con sus atributos usando el
  * metodo imprime_transportes().
  *
@@ -60,9 +61,9 @@ void Base::mostrar_transportes(){
 /**
  * mostrar_transdis imprime disponibilidad de transportes
  *
- * utiliza el arreglo trans[] y el contador, para recorrer  el
- * arreglo imprimiendo el nombre de cada objeto y su disponibilidad
- * usando el metodo imprime_disponibilidad().
+ * utiliza el arreglo trans[] y el contador, para recorrer el
+ * arreglo imprimiendo el nombre de cada objeto y su
+ * disponibilidad usando el metodo imprime_disponibilidad().
  *
  * @param
  * @return
@@ -158,15 +159,20 @@ void Base::buscar_por(int vel_max ){
  * @return
  */
 void Base::crear_transportes(){
-    trans[contador] = new Terrestre("Box Truck", 001, 0, 100, 4600.00, 12, 40, 0);
+    trans[contador] = new Terrestre("Box Truck", 001, 0, 100,\
+    4600.00, 12, 40, 0);
     contador++;
-    trans[contador] = new Terrestre("Hazmat Truck", 002, 1, 110, 4600.00, 12, 40, 0);
+    trans[contador] = new Terrestre("Hazmat Truck", 002, 1,\
+    110, 4600.00, 12, 40, 0);
     contador++;
-    trans[contador] = new Maritimo("Container Ship", 003, 1, 50, 50000.00, 30, 150, "Despejado", "Alta");
+    trans[contador] = new Maritimo("Container Ship", 003, 1,\
+    50, 50000.00, 30, 150, "Despejado", "Alta");
     contador++;
-    trans[contador] = new Aereo("Boeing 777-200", 004, 0, 50, 18000.00, 6, 30, "Despejado", "Aire");
+    trans[contador] = new Aereo("Boeing 777-200", 004, 0,\
+    50, 18000.00, 6, 30, "Despejado", "Aire");
     contador++;
-    trans[contador]= new Aereo("Airbus 320", 005, 1, 50, 1500.00, 4, 20, "Despejado", "Tierra");
+    trans[contador]= new Aereo("Airbus 320", 005, 1, 50,\
+    1500.00, 4, 20, "Despejado", "Tierra");
     contador++;
 }
 
