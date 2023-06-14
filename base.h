@@ -11,8 +11,9 @@ class Base{
         int contador;
 
     public:
-        Base(){}
+        Base(): contador(0){}
         void mostrar_transportes();
+        void mostrar_transdis();
         void crear_transportes();
         void buscar_por(float cap_kg );
         void buscar_por(int vel_max );
@@ -23,6 +24,12 @@ class Base{
 void Base::mostrar_transportes(){
     for (int i = 0; i < contador; i = i + 1){
         std::cout<< trans[i]->imprime_transportes();
+    }
+}
+
+void Base::mostrar_transdis(){
+    for (int i = 0; i < contador; i = i + 1){
+        std::cout<< trans[i]->imprime_disponibilidad();
     }
 }
 
@@ -55,9 +62,9 @@ void Base::buscar_por(int vel_max ){
 }
 
 void Base::crear_transportes(){
-    trans[contador] = new Terrestre("Box Truck", 001, 0, 100, 4600.00, 12, 40, 1);
+    trans[contador] = new Terrestre("Box Truck", 001, 0, 100, 4600.00, 12, 40, true);
     contador++;
-    trans[contador] = new Terrestre("Hazmat Truck", 002, 1, 110, 4600.00, 12, 40, 1);
+    trans[contador] = new Terrestre("Hazmat Truck", 002, 1, 110, 4600.00, 12, 40, true);
     contador++;
     trans[contador] = new Maritimo("Container Ship", 003, 1, 50, 50000.00, 30, 150, "Despejado", "Alta");
     contador++;
