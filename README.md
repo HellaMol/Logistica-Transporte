@@ -12,6 +12,6 @@ En el UML se puede observar que la clase Transporte tiene una relación de compo
 
 Este programa no permite al usuario registrar nuevos transportes. Por lo tanto si se quieren registrar nuevos, se deben crear dentro del código. Si el usuario pide un transporte que no cumpla
 con las caracteristicas, no lanzará una advertencia de que tal transporte no existe, sencillamente no se imprimirán transportes. Por otro lado, si el usuario ingresa una caracteristica que no
-sea igual al tipo de dato preestablecido (string en vez de int) esto causará un error en el código. 
+sea igual al tipo de dato preestablecido (string en vez de int) esto causará un error en el código donde se generará un buncle infinito donde se imprimen todos los transportes. 
 
 Otra limitación que tiene este programa es que los atributos no pueden ser modificados directamente por el usuario. Esto significa, que si se desea corregir o actualizar un dato se debe hacer desde el código. Además, en el caso de que se deseen implementar futuros métodos, en caso de que estos pertenezcan a una clase agena a Transporte deberan de crearse getters y setters para ciertos atributos.
