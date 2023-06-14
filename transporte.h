@@ -4,8 +4,8 @@
  * Laura Helena Molina Jimenez
  * A01706282
  * 14/06/2023
- * Esta clase define al objeto tipo Transporte, contiene las clases heredadas
- * Terrestre, Maritimo y Aereo.
+ * Esta clase define al objeto tipo Transporte,
+ * contiene las clases heredadas Terrestre, Maritimo y Aereo.
  */
 
 #ifndef TRANSPORTE_H
@@ -111,7 +111,8 @@ std::string Terrestre::imprime_disponibilidad(){
 /**
  * imprime_transportes imprime a atributos de Terrestre.
  *
- * concatena los valores de los atributos en un string para imprimirse
+ * concatena los valores de los atributos
+ * en un string para imprimirse
  *
  * @param
  * @return string con los valores y texto unido
@@ -182,7 +183,8 @@ std::string Maritimo::imprime_disponibilidad(){
 /**
  * imprime_transportes imprime a atributos de Maritimo.
  *
- * concatena los valores de los atributos en un string para imprimirse
+ * concatena los valores de los atributos en un
+ * string para imprimirse
  *
  * @param
  * @return string con los valores y texto unido
@@ -254,7 +256,8 @@ std::string Aereo::imprime_disponibilidad(){
 /**
  * imprime_transportes imprime a atributos de Aereo.
  *
- * concatena los valores de los atributos en un string para imprimirse
+ * concatena los valores de los atributos
+ * en un string para imprimirse
  *
  * @param
  * @return string con los valores y texto unido
