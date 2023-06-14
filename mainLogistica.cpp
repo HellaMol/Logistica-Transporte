@@ -1,6 +1,23 @@
+/*
+ *
+ * Proyecto Logistica de Transportes
+ * Laura Helena Molina Jimenez
+ * A01706282
+ * 14/06/2023
+ *
+ * Este proyecto para la clase de Progrmación Orientado a Objetos
+ * tiene por objetivo facilitar la visualizacion de los transportes
+ * de una empresa ficticia. Permite filtrar los transportes por
+ * ciertos atributos, ver la disponibilidad y mostrar todos los
+ * transportes registrados con sus respectivos atributos.
+ */
+
+//Se incluyen bibliotecas para imprimir
 #include <iostream>
 #include <string>
 #include<sstream>
+
+//Se incluyen archivos header
 #include "transporte.h"
 #include "base.h"
 
