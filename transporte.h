@@ -24,6 +24,7 @@ class Transporte{
         cap_cajas(cc){};
 
         virtual std::string imprime_transportes()=0;
+        virtual std::string imprime_disponibilidad()=0;
 
         std::string get_nombre();
         int get_num_trans();
@@ -70,34 +71,6 @@ int Transporte::get_cap_cajas(){
     return cap_cajas;
 }
 
-void Transporte::set_nombre(std::string nom){
-    nombre = nom;
-}
-
-void Transporte::set_num_trans(int num){
-    num_trans = num;
-}
-
-void Transporte::set_permiso(bool per){
-    permiso = per;
-}
-
-void Transporte::set_vel_max(int vel){
-    vel_max = vel;
-}
-
-void Transporte::set_cap_kg(float ck){
-    cap_kg = ck;
-}
-
-void Transporte::set_cap_pallets(int cp){
-    cap_pallets = cp;
-}
-
-void Transporte::set_cap_cajas(int cc){
-    cap_cajas = cc;
-}
-
 class Terrestre: public Transporte{
     private:
         bool edo_llantas;
@@ -110,12 +83,23 @@ class Terrestre: public Transporte{
         edo_llantas(edo){};
 
         std::string imprime_transportes();
-        std::string disponibilidad(bool );
+        std::string imprime_disponibilidad(bool );
 
         bool get_edo_llantas();
         void set_edo_llantas(bool );
 
 };
+
+std::string Terrestre::imprime_disponibilidad(bool edo_llantas){
+    if (edo_llantas == false){
+        std::cout << nombre << std::endl;
+        std::cout << "Está disponible" << std::endl;
+    }
+    else if (edo_llantas == true ){
+        std::cout << nombre << std::endl;
+        std::cout << "No está disponible" << std::endl;
+    }
+}
 
 std::string Terrestre::imprime_transportes(){
     std::stringstream aux;
@@ -154,13 +138,22 @@ class Maritimo: public Transporte{
         }
 
         std::string imprime_transportes();
+        std::string imprime_disponibilidad(std::string, std::string );
 
         std::string get_clima_mar();
         std::string get_marea();
-
-        void set_clima_mar(std::string );
-        void set_marea(std::string );
 };
+
+std::string Maritimo::imprime_disponibilidad(std::string clmar, std::string mar){
+    if (clmar == "Despejado" && mar == "Baja"){
+        std::cout << nombre << std::endl;
+        std::cout << "Está disponible" << std::endl;
+    }
+    else if (clmar =! "Despejado" && mar =! "Baja"){
+        std::cout << nombre << std::endl;
+        std::cout << "No está disponible" << std::endl;
+    }
+}
 
 std::string Maritimo::imprime_transportes(){
     std::stringstream aux;
@@ -184,14 +177,6 @@ std::string Maritimo::get_marea(){
     return marea;
 }
 
-void Maritimo::set_clima_mar(std::string clmar){
-    clima_mar = clmar;
-}
-
-void Maritimo::set_marea(std::string mar){
-    marea = mar;
-}
-
 class Aereo: public Transporte{
     private:
         std::string clima_cielo;
@@ -208,13 +193,24 @@ class Aereo: public Transporte{
         }
 
         std::string imprime_transportes();
+        std::string imprime_disponibilidad(std::string, std::string );
 
         std::string get_clima_cielo();
         std::string get_fase_vuelo();
-
-        void set_clima_cielo(std::string );
-        void set_fase_vuelo(std::string );
 };
+
+
+
+std::string Aereo::imprime_disponibilidad(std::string clcie, std::string fv){
+    if (clcie == "Despejado" && fv == "Tierra"){
+        std::cout << nombre << std::endl;
+        std::cout << "Está disponible" << std::endl;
+    }
+    else if (clcie =! "Despejado" && fv =! "Tierra"){
+        std::cout << nombre << std::endl;
+        std::cout << "No está disponible" << std::endl;
+    }
+}
 
 std::string Aereo::imprime_transportes(){
     std::stringstream aux;
@@ -237,14 +233,6 @@ std::string Aereo::get_clima_cielo(){
 
 std::string Aereo::get_fase_vuelo(){
     return fase_vuelo;
-}
-
-void Aereo::set_clima_cielo(std::string clcie){
-    clima_cielo = clcie;
-}
-
-void Aereo::set_fase_vuelo(std::string fv){
-    fase_vuelo = fv;
 }
 
 #endif
