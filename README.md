@@ -5,7 +5,7 @@ Este proyecto tiene por objetivo crear un prototipo de un programa para una empr
 
 # Diagrama UML
 
-En el UML se puede observar que la clase transporte tiene una relación de composición a la clase base, ya que esta sigue existiendo incluso si el transporte no existe y la clase base necesita accesar a los datos de la clase transporte. Por otro lado, la clase transporte es una clase abstracta de la cual parten otras clases tales como Aéreo, Marítimo, Terrestre las cuales heredan a otras subclases con otros atributos.
+En el UML se puede observar que la clase Transporte tiene una relación de composición a la clase Base, ya que estos transportes no pueden ser compartido con otras bases y la clase base necesita accesar a los datos de la clase Transporte. Por otro lado, la clase Transporte es una clase abstracta de la cual parten las subclases Aereo, Maritimo, Terrestre de las cuales se generan los objetos con sus respectivos métodos.
 
 
 # Consideraciones
