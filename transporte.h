@@ -1,12 +1,25 @@
+/*
+ *
+ * Proyecto Logistica de Transportes
+ * Laura Helena Molina Jimenez
+ * A01706282
+ * 14/06/2023
+ * Esta clase define al objeto tipo Transporte, contiene las clases heredadas
+ * Terrestre, Maritimo y Aereo.
+ */
+
 #ifndef TRANSPORTE_H
 #define TRANSPORTE_H
 
+//Se incluyen bibliotecas para imprimir
 #include<iostream>
 #include <string>
 #include <sstream>
 
+//Se declara clase Transporte que es abstracta
 class Transporte{
 
+    //Se declaran atributos
     protected:
         std::string nombre;
         int num_trans;
@@ -16,6 +29,7 @@ class Transporte{
         int cap_pallets;
         int cap_cajas;
 
+    //Se declaran metodos que tendra el objeto
     public:
         Transporte(){}
         Transporte(std::string nom, int num, bool per, int vel,\
@@ -23,37 +37,16 @@ class Transporte{
         permiso(per), vel_max(vel), cap_kg(ck), cap_pallets(cp),\
         cap_cajas(cc){};
 
+        //Metodos abstractos que seran sobreescritos
         virtual std::string imprime_transportes()=0;
         virtual std::string imprime_disponibilidad()=0;
 
-        std::string get_nombre();
-        int get_num_trans();
-        bool get_permiso();
+        //Metodos de acceso
         int get_vel_max();
         float get_cap_kg();
         int get_cap_pallets();
         int get_cap_cajas();
-
-        void set_nombre(std::string );
-        void set_num_trans(int );
-        void set_permiso(bool );
-        void set_vel_max(int );
-        void set_cap_kg(float );
-        void set_cap_pallets(int );
-        void set_cap_cajas(int );
 };
-
-std::string Transporte::get_nombre(){
-    return nombre;
-}
-
-int Transporte::get_num_trans(){
-    return num_trans;
-}
-
-bool Transporte::get_permiso(){
-    return permiso;
-}
 
 int Transporte::get_vel_max(){
     return vel_max;
@@ -71,10 +64,14 @@ int Transporte::get_cap_cajas(){
     return cap_cajas;
 }
 
+//Se declara clase Terrestre que hereda de Transporte
 class Terrestre: public Transporte{
+
+    //Se declara atributo de Terrestre
     private:
         bool edo_llantas;
 
+    //Se declaran metodos de la clase
     public:
         Terrestre(){}
         Terrestre(std::string nom, int num, bool per, int vel,\
@@ -82,51 +79,65 @@ class Terrestre: public Transporte{
         Transporte(nom, num, per, vel, ck, cp, cc),\
         edo_llantas(edo){};
 
+        //Metodos sobreescritos
         std::string imprime_transportes();
-        std::string imprime_disponibilidad(bool );
-
-        bool get_edo_llantas();
-        void set_edo_llantas(bool );
-
+        std::string imprime_disponibilidad();
 };
 
-std::string Terrestre::imprime_disponibilidad(bool edo_llantas){
-    if (edo_llantas == false){
-        std::cout << nombre << std::endl;
-        std::cout << "Está disponible" << std::endl;
+/**
+ * imprime_disponibilidad imprime nombre de objeto Terrestre y
+ *
+ * si esta disponible en relacion al valor del atributo edo_llanta
+ *
+ * concatena el nombre y el texto en un string para imprimirse
+ *
+ * @param
+ * @return string con los valores y texto unido
+ */
+std::string Terrestre::imprime_disponibilidad(){
+    std::stringstream aux;
+    if (edo_llantas == 0){
+        aux << nombre << "\n"
+        << "Esta disponible" << "\n";
+        return aux.str();
     }
-    else if (edo_llantas == true ){
-        std::cout << nombre << std::endl;
-        std::cout << "No está disponible" << std::endl;
-    }
+    else{
+        aux << nombre << "\n"
+        << "No esta disponible" << "\n";
+        return aux.str();
+    }
 }
 
+/**
+ * imprime_transportes imprime a atributos de Terrestre.
+ *
+ * concatena los valores de los atributos en un string para imprimirse
+ *
+ * @param
+ * @return string con los valores y texto unido
+ */
 std::string Terrestre::imprime_transportes(){
     std::stringstream aux;
-	aux << "Nombre: "<< get_nombre() << "\n"
-	<< "Numero: "<< get_num_trans() << "\n"
-	<< "Permiso: "<< get_permiso() << "\n"
-	<< "Velocidad maxima: "<< get_vel_max() << "\n"
-	<< "Capacidad de kg: "<< get_cap_kg() << "\n"
-	<< "Capacidad de pallets: "<< get_cap_pallets() << "\n"
-	<< "Capacidad de cajas: "<< get_cap_cajas() << "\n"
-	<< "Estado de las llantas: "<< get_edo_llantas() << "\n";
+	aux << "Nombre: "<< nombre << "\n"
+	<< "Numero: "<< num_trans << "\n"
+	<< "Permiso: "<< permiso << "\n"
+	<< "Velocidad maxima: "<< vel_max << "\n"
+	<< "Capacidad de kg: "<< cap_kg << "\n"
+	<< "Capacidad de pallets: "<< cap_pallets << "\n"
+	<< "Capacidad de cajas: "<< cap_cajas << "\n"
+	<< "Estado de las llantas: "<< edo_llantas << "\n";
 	return aux.str();
 }
 
-bool Terrestre::get_edo_llantas(){
-    return edo_llantas;
-}
-
-void Terrestre::set_edo_llantas(bool edo){
-    edo_llantas = edo;
-}
-
+//Se declara clase Maritimo que hereda de Transporte
 class Maritimo: public Transporte{
+
+    //Se declaran atributos de Maritimo
     private:
         std::string clima_mar;
         std::string marea;
 
+    //Se declaran metodos de la clase
     public:
         Maritimo(){}
         Maritimo(std::string nom, int num, bool per, int vel,\
@@ -137,51 +148,68 @@ class Maritimo: public Transporte{
             marea = mar;
         }
 
+        //Metodos sobreescritos
         std::string imprime_transportes();
-        std::string imprime_disponibilidad(std::string, std::string );
-
-        std::string get_clima_mar();
-        std::string get_marea();
+        std::string imprime_disponibilidad();
 };
 
-std::string Maritimo::imprime_disponibilidad(std::string clmar, std::string mar){
-    if (clmar == "Despejado" && mar == "Baja"){
-        std::cout << nombre << std::endl;
-        std::cout << "Está disponible" << std::endl;
+/**
+ * imprime_disponibilidad imprime nombre de objeto Maritimo y
+ *
+ * si esta disponible en relacion a los valores de los atributos
+ *
+ * clima_mar y marea
+ *
+ * concatena el nombre y el texto en un string para imprimirse
+ *
+ * @param
+ * @return string con los valores y texto unido
+ */
+std::string Maritimo::imprime_disponibilidad(){
+    std::stringstream aux;
+    if (clima_mar == "Despejado" && marea == "Baja"){
+        aux << nombre << "\n"
+        << "Esta disponible" << "\n";
+        return aux.str();
     }
-    else if (clmar =! "Despejado" && mar =! "Baja"){
-        std::cout << nombre << std::endl;
-        std::cout << "No está disponible" << std::endl;
+    else{
+        aux << nombre << "\n"
+        << "No esta disponible" << "\n";
+        return aux.str();
     }
 }
 
+/**
+ * imprime_transportes imprime a atributos de Maritimo.
+ *
+ * concatena los valores de los atributos en un string para imprimirse
+ *
+ * @param
+ * @return string con los valores y texto unido
+ */
 std::string Maritimo::imprime_transportes(){
     std::stringstream aux;
-	aux << "Nombre: "<< get_nombre() << "\n"
-	<< "Numero: "<< get_num_trans() << "\n"
-	<< "Permiso: "<< get_permiso() << "\n"
-	<< "Velocidad maxima: "<< get_vel_max() << "\n"
-	<< "Capacidad de kg: "<< get_cap_kg() << "\n"
-	<< "Capacidad de pallets: "<< get_cap_pallets() << "\n"
-	<< "Capacidad de cajas: "<< get_cap_cajas() << "\n"
-    << "Clima en el mar: "<< get_clima_mar() << "\n"
-	<< "Marea: "<< get_marea() << "\n";
+	aux << "Nombre: "<< nombre << "\n"
+	<< "Numero: "<< num_trans << "\n"
+	<< "Permiso: "<< permiso << "\n"
+	<< "Velocidad maxima: "<< vel_max << "\n"
+	<< "Capacidad de kg: "<< cap_kg << "\n"
+	<< "Capacidad de pallets: "<< cap_pallets << "\n"
+	<< "Capacidad de cajas: "<< cap_cajas << "\n"
+    << "Clima en el mar: "<< clima_mar << "\n"
+	<< "Marea: "<< marea << "\n";
 	return aux.str();
 }
 
-std::string Maritimo::get_clima_mar(){
-    return clima_mar;
-}
-
-std::string Maritimo::get_marea(){
-    return marea;
-}
-
+//Se declara clase Aereo que hereda de Transporte
 class Aereo: public Transporte{
+
+    //Se declaran atributos de Aereo
     private:
         std::string clima_cielo;
         std::string fase_vuelo;
 
+    //Se declaran metodos de la clase
     public:
         Aereo(){}
         Aereo(std::string nom, int num, bool per, int vel,\
@@ -192,47 +220,58 @@ class Aereo: public Transporte{
             fase_vuelo = fv;
         }
 
+        //Metodos sobreescritos
         std::string imprime_transportes();
-        std::string imprime_disponibilidad(std::string, std::string );
-
-        std::string get_clima_cielo();
-        std::string get_fase_vuelo();
+        std::string imprime_disponibilidad();
 };
 
-
-
-std::string Aereo::imprime_disponibilidad(std::string clcie, std::string fv){
-    if (clcie == "Despejado" && fv == "Tierra"){
-        std::cout << nombre << std::endl;
-        std::cout << "Está disponible" << std::endl;
+/**
+ * imprime_disponibilidad imprime nombre de objeto Aereo y
+ *
+ * si esta disponible en relacion a los valores de los atributos
+ *
+ * clima_cielo y fase_vuelo
+ *
+ * concatena el nombre y el texto en un string para imprimirse
+ *
+ * @param
+ * @return string con los valores y texto unido
+ */
+std::string Aereo::imprime_disponibilidad(){
+    std::stringstream aux;
+    if (clima_cielo == "Despejado" && fase_vuelo == "Tierra"){
+        aux << nombre << "\n"
+        << "Esta disponible" << "\n";
+        return aux.str();
     }
-    else if (clcie =! "Despejado" && fv =! "Tierra"){
-        std::cout << nombre << std::endl;
-        std::cout << "No está disponible" << std::endl;
+    else{
+        aux << nombre << "\n"
+        << "No esta disponible" << "\n";
+        return aux.str();
     }
 }
 
+/**
+ * imprime_transportes imprime a atributos de Aereo.
+ *
+ * concatena los valores de los atributos en un string para imprimirse
+ *
+ * @param
+ * @return string con los valores y texto unido
+ */
 std::string Aereo::imprime_transportes(){
     std::stringstream aux;
-	aux << "Nombre: "<< get_nombre() << "\n"
-	<< "Numero: "<< get_num_trans() << "\n"
-	<< "Permiso: "<< get_permiso() << "\n"
-	<< "Velocidad maxima: "<< get_vel_max() << "\n"
-	<< "Capacidad de kg: "<< get_cap_kg() << "\n"
-	<< "Capacidad de pallets: "<< get_cap_pallets() << "\n"
-	<< "Capacidad de cajas: "<< get_cap_cajas() << "\n"
-    << "Clima en el cielo: "<< get_clima_cielo() << "\n"
-	<< "Fase del vuelo: "<< get_fase_vuelo() << "\n";
+    aux << "Nombre: "<< nombre << "\n"
+	<< "Numero: "<< num_trans << "\n"
+	<< "Permiso: "<< permiso << "\n"
+	<< "Velocidad maxima: "<< vel_max << "\n"
+	<< "Capacidad de kg: "<< cap_kg << "\n"
+	<< "Capacidad de pallets: "<< cap_pallets << "\n"
+	<< "Capacidad de cajas: "<< cap_cajas << "\n"
+    << "Clima en el cielo: "<< clima_cielo << "\n"
+	<< "Fase del vuelo: "<< fase_vuelo << "\n";
 
 	return aux.str();
 }
 
-std::string Aereo::get_clima_cielo(){
-    return clima_cielo;
-}
-
-std::string Aereo::get_fase_vuelo(){
-    return fase_vuelo;
-}
-
-#endif
+#endif //TRANSPORTE_H
