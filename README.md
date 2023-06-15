@@ -15,6 +15,6 @@ sea igual al tipo de dato preestablecido (string en vez de int) esto causará un
 
 Otra limitación que tiene este programa es que los atributos no pueden ser modificados directamente por el usuario. Esto significa, que si se desea corregir o actualizar un dato se debe hacer desde el código. Además, en el caso de que se deseen implementar futuros métodos, en caso de que estos pertenezcan a una clase agena a Transporte deberan de crearse getters y setters para ciertos atributos.
 
-# Consideraciones
+# Correcciones
 
 Se hicieron algunos ajustes al formato del código para que no pasara de 68 caracteres.
